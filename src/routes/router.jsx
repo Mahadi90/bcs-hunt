@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/SignUp/Signup";
 import Application from "../pages/Application/Application";
+import AdminPanel from "../pages/AdminPanel/AdminPanel";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path : '/application',
                 element :<Application></Application>
+            },
+            {
+                path : '/dashboard',
+                element :<AdminPanel></AdminPanel>
             }
         ]
     }

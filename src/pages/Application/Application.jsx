@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Swal from "sweetalert2";
 
 const Application = () => {
   const handleSubmitApplication = (e) => {
@@ -9,7 +10,36 @@ const Application = () => {
     const batch = form.batch.value;
     const department = form.department.value;
     const roll = parseInt(Math.random() * 10000);
-       console.log(roll, name, session, batch, department)
+    //    console.log(roll, name, session, batch, department)
+    const applicationInfo = {
+        name,
+        session,
+        batch,
+        department,
+        roll
+    }
+
+        fetch('http://localhost:5000/applications', {
+            method : "POST",
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify(applicationInfo)
+        }).then(res => res.json())
+        .then(data => {
+        //  console.log(data)
+        if(data.insertedId){
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Application Submitted",
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
+        })
+      
+      
   };
 
   return (
