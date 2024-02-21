@@ -9,18 +9,18 @@ const Application = () => {
     const session = form.session.value;
     const batch = form.batch.value;
     const department = form.department.value;
-    const roll = parseInt(Math.random() * 10000);
+    // const roll = parseInt(Math.random() * 10000);
     //    console.log(roll, name, session, batch, department)
     const applicationInfo = {
         name,
         session,
         batch,
         department,
-        roll
+        // roll
     }
 
         fetch('http://localhost:5000/applications', {
-            method : "POST",
+            method : 'POST',
             headers : {
                 'content-type' : 'application/json'
             },
